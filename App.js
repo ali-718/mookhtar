@@ -8,11 +8,22 @@ import {
   Dimensions,
   Button,
 } from "react-native";
-import About from "./About";
+import About from "./screen/About";
 
 export default class App extends Component {
   ShowAlert = () => {
     alert("Hello I am Ali");
+  };
+
+  state = {
+    Name: "Mookhtar",
+    Age: 25,
+  };
+
+  ChangeName = () => {
+    this.setState({
+      Name: "Ali",
+    });
   };
 
   render() {
@@ -37,6 +48,33 @@ export default class App extends Component {
           <Image
             style={{ width: "100%", height: 300 }}
             source={require("./assets/pic1.jpg")}
+          /> */}
+
+          {/* <Text>{this.state.Name}</Text>
+          <Text>{this.state.Age}</Text>
+          <Button
+            title="About me"
+            onPress={() => {
+              // this.state["Name"] = "Ali";
+              // console.log(this.state);
+
+              this.setState({
+                Name: "Ali",
+              });
+            }}
+          /> */}
+          <About Display={this.ChangeName} heading={this.state.Name} />
+          <Profile
+            Name={this.state.Name}
+            age={this.state.age}
+            Change={this.ChangeDetails}
+          />
+          {/* <Button title="Press me" onPress={this.ShowAlert} />
+          <Button
+            title="Press me"
+            onPress={() => {
+              this.ShowAlert();
+            }}
           /> */}
 
           <ScrollView
@@ -67,7 +105,6 @@ export default class App extends Component {
               }}
             />
           </ScrollView>
-          <About DisplayAlert={this.ShowAlert} Heading={"Muhammad Mookhtar"} />
         </ScrollView>
       </SafeAreaView>
     );

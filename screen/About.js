@@ -5,7 +5,7 @@ export default class About extends Component {
   render() {
     return (
       <View style={{ width: "100%", padding: 10 }}>
-        <Text style={{ color: "red", fontSize: 25 }}>{this.props.Heading}</Text>
+        <Text style={{ color: "red", fontSize: 25 }}>{this.props.heading}</Text>
         <Text style={{ marginTop: 10 }}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -18,12 +18,7 @@ export default class About extends Component {
           including versions of Lorem Ipsum.
         </Text>
 
-        <Button
-          title="Press me"
-          onPress={() => {
-            this.props.DisplayAlert();
-          }}
-        />
+        <Button title="About me" onPress={() => this.props.Display()} />
       </View>
     );
   }
