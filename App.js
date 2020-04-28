@@ -1,25 +1,11 @@
 import React, { Component } from "react";
 import { Text, View, ScrollView } from "react-native";
 import Design from "./Design";
+import Iteration from "./Iteration";
 
 export default class App extends Component {
   render() {
-    return (
-      <View style={{ width: "100%", flex: 1 }}>
-        <Design />
-        <View
-          style={{
-            width: "100%",
-            height: 100,
-            backgroundColor: "green",
-            alignItems: "center",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Text>Ali</Text>
-        </View>
-      </View>
-    );
+    return <Iteration />;
   }
 }
 
