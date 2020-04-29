@@ -4,9 +4,9 @@ import { Text, View, Button } from "react-native";
 export default class Iteration extends Component {
   state = {
     Users: [
-      { Name: "Iphone X", Price: 85000 },
-      { Name: "Iphone 11 Pro", Price: 125000 },
-      { Name: "Samsung S20", Price: 75000 },
+      { Name: "Iphone X", Price: 85000, id: 1 },
+      { Name: "Iphone 11 Pro", Price: 125000, id: 2 },
+      { Name: "Samsung S20", Price: 75000, id: 3 },
     ],
     price: 0,
   };
@@ -25,6 +25,7 @@ export default class Iteration extends Component {
           if (item.Price > this.state.price) {
             return (
               <View
+                key={item.id}
                 style={{
                   width: "90%",
                   alignItems: "center",

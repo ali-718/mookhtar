@@ -2,10 +2,21 @@ import React, { Component } from "react";
 import { Text, View, Button } from "react-native";
 
 export default class About extends Component {
+  componentDidMount() {
+    this.props.navigation.setOptions({
+      headerLeft: () => (
+        <Button
+          title="Go Back"
+          onPress={() => this.props.navigation.goBack()}
+        />
+      ),
+    });
+  }
+
   render() {
     return (
       <View style={{ width: "100%", padding: 10 }}>
-        <Text style={{ color: "red", fontSize: 25 }}>{this.props.heading}</Text>
+        <Text style={{ color: "red", fontSize: 25 }}>Ali</Text>
         <Text style={{ marginTop: 10 }}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -17,8 +28,11 @@ export default class About extends Component {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </Text>
-
-        <Button title="About me" onPress={() => this.props.Display()} />
+        <Button
+          title="Go Back"
+          onPress={() => this.props.navigation.goBack()}
+        />
+        {/* <Button title="About me" onPress={() => this.props.Display()} /> */}
       </View>
     );
   }
