@@ -19,13 +19,14 @@ export default class App extends Component {
             name="Products"
             component={Products}
           />
-          <Stack.Screen name="Details" component={Details} />
-
           <Stack.Screen
             options={{ headerShown: false }}
             name="Home"
             component={Home}
           />
+
+          <Stack.Screen name="Details" component={Details} />
+
           <Stack.Screen name="About" component={About} />
         </Stack.Navigator>
       </NavigationContainer>
