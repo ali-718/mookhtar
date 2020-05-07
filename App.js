@@ -6,6 +6,7 @@ import Home from "./screen/Home";
 import About from "./screen/About";
 import Products from "./screen/Products";
 import Details from "./screen/Details";
+import Login from "./screen/Login";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,11 @@ export default class App extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Login"
+            component={Login}
+          />
           <Stack.Screen
             options={{ headerShown: false }}
             name="Products"

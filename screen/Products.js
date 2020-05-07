@@ -50,6 +50,7 @@ export default class Products extends Component {
       })
       .then((ali) => {
         console.log(ali);
+        this.Products = ali;
         this.setState({
           Products: ali,
           isLoading: false,
@@ -75,6 +76,8 @@ export default class Products extends Component {
     isLoading: true,
   };
 
+  Products = [];
+
   render() {
     return (
       <SafeAreaView style={{ width: "100%", flex: 1, alignItems: "center" }}>
@@ -85,7 +88,7 @@ export default class Products extends Component {
         ) : (
           <ScrollView style={{ width: "100%", flex: 1 }}>
             <View style={{ alignItems: "center", flex: 1, width: "100%" }}>
-              {this.state.Products.map((item) => {
+              {this.Products.map((item) => {
                 return (
                   <View
                     style={{
