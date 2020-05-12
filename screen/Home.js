@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, SafeAreaView, Button } from "react-native";
+import { Text, View, SafeAreaView, Button, AsyncStorage } from "react-native";
 
 export default class Home extends Component {
   componentDidMount() {
@@ -19,6 +19,13 @@ export default class Home extends Component {
         <Button
           title="Go to about"
           onPress={() => this.props.navigation.navigate("About")}
+        />
+        <Button
+          title="Logout"
+          onPress={async () => {
+            await AsyncStorage.removeItem("user");
+            this.props.navigation.navigate("Login");
+          }}
         />
       </SafeAreaView>
     );

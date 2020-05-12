@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  AsyncStorage,
+} from "react-native";
 
 export default class Login extends Component {
   state = {
@@ -45,7 +51,12 @@ export default class Login extends Component {
         }
         return res.json();
       })
-      .then((res) => console.log(res))
+      .then(async (res) => {
+        console.log(res.user);
+        let stringObj = JSON.stringify(res.user);
+        await AsyncStorage.setItem("user", stringObj);
+        this.props.navigation.navigate("Home");
+      })
       .catch((e) => {
         console.log(e);
       });

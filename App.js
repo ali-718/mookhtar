@@ -7,6 +7,7 @@ import About from "./screen/About";
 import Products from "./screen/Products";
 import Details from "./screen/Details";
 import Login from "./screen/Login";
+import splashscreen from "./screen/splashscreen";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export default class App extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="Splash" component={splashscreen} />
           <Stack.Screen
             options={{ headerShown: false }}
             name="Login"
