@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, SafeAreaView, Button, AsyncStorage } from "react-native";
+import BottomTabBar from "../components/BottomTabBar";
 
 export default class Home extends Component {
   componentDidMount() {
@@ -14,20 +15,26 @@ export default class Home extends Component {
   render() {
     console.log("i am render");
     return (
-      <SafeAreaView>
-        <Text> Home </Text>
-        <Button
-          title="Go to about"
-          onPress={() => this.props.navigation.navigate("About")}
-        />
-        <Button
-          title="Logout"
-          onPress={async () => {
-            await AsyncStorage.removeItem("user");
-            this.props.navigation.navigate("Login");
-          }}
-        />
-      </SafeAreaView>
+      <View style={{ width: "100%", flex: 1 }}>
+        <SafeAreaView style={{ width: "100%", flex: 1 }}>
+          <Text> Home </Text>
+          <Button
+            title="Go to about"
+            onPress={() => this.props.navigation.navigate("About")}
+          />
+          <Button
+            title="Logout"
+            onPress={async () => {
+              await AsyncStorage.removeItem("user");
+              this.props.navigation.navigate("Login");
+            }}
+          />
+        </SafeAreaView>
+
+        <SafeAreaView style={{ backgroundColor: "white" }}>
+          <BottomTabBar />
+        </SafeAreaView>
+      </View>
     );
   }
 }
