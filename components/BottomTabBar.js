@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
-import { Icon } from "native-base";
+import { Text, View, TouchableOpacity } from "react-native";
+import { Icon, Badge } from "native-base";
 
 export default class BottomTabBar extends Component {
   render() {
@@ -13,7 +13,8 @@ export default class BottomTabBar extends Component {
           flexDirection: "row",
         }}
       >
-        <View
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Home")}
           style={{
             width: "20%",
             height: 50,
@@ -21,9 +22,14 @@ export default class BottomTabBar extends Component {
             justifyContent: "center",
           }}
         >
-          <Icon name="home-automation" type="MaterialCommunityIcons" />
-        </View>
-        <View
+          <Icon
+            style={{ color: this.props.home ? "tomato" : "black" }}
+            name="home-automation"
+            type="MaterialCommunityIcons"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Products")}
           style={{
             width: "20%",
             height: 50,
@@ -31,9 +37,36 @@ export default class BottomTabBar extends Component {
             justifyContent: "center",
           }}
         >
-          <Icon name="heart" type="AntDesign" />
-        </View>
-        <View
+          <Icon
+            style={{ color: this.props.wishlist ? "tomato" : "black" }}
+            name="heart"
+            type="AntDesign"
+          />
+          {!this.props.wishlist ? (
+            <View
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: 50,
+                alignItems: "flex-end",
+              }}
+            >
+              <Badge
+                style={{
+                  width: 20,
+                  height: 20,
+                  margin: 0,
+                  padding: 0,
+                  alignSelf: "flex-end",
+                }}
+                success
+              >
+                <Text style={{ fontSize: 10 }}>2</Text>
+              </Badge>
+            </View>
+          ) : null}
+        </TouchableOpacity>
+        <TouchableOpacity
           style={{
             width: "20%",
             height: 50,
@@ -42,8 +75,8 @@ export default class BottomTabBar extends Component {
           }}
         >
           <Icon name="user" type="AntDesign" />
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
           style={{
             width: "20%",
             height: 50,
@@ -52,8 +85,8 @@ export default class BottomTabBar extends Component {
           }}
         >
           <Icon name="ticket-outline" type="MaterialCommunityIcons" />
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
           style={{
             width: "20%",
             height: 50,
@@ -62,7 +95,7 @@ export default class BottomTabBar extends Component {
           }}
         >
           <Icon name="shoppingcart" type="AntDesign" />
-        </View>
+        </TouchableOpacity>
       </View>
     );
   }

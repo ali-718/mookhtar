@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import BottomTabBar from "../components/BottomTabBar";
 
 export default class Products extends Component {
   componentDidMount() {
@@ -82,128 +83,133 @@ export default class Products extends Component {
     return (
       <SafeAreaView style={{ width: "100%", flex: 1, alignItems: "center" }}>
         {this.state.isLoading == true ? (
-          <View>
+          <View style={{ width: "100%", flex: 1 }}>
             <Text>Loading</Text>
           </View>
         ) : (
-          <ScrollView style={{ width: "100%", flex: 1 }}>
-            <View style={{ alignItems: "center", flex: 1, width: "100%" }}>
-              {this.Products.map((item) => {
-                return (
-                  <View
-                    style={{
-                      width: "90%",
-                      backgroundColor: "white",
-                      marginTop: 20,
-                      borderRadius: 20,
-                      alignItems: "center",
-                      justifyContent: "center",
-                      shadowColor: "#000",
-                      shadowOffset: {
-                        width: 0,
-                        height: 2,
-                      },
-                      shadowOpacity: 0.25,
-                      shadowRadius: 3.84,
-
-                      elevation: 5,
-                    }}
-                  >
-                    <Image
-                      style={{ width: "100%", height: 200, marginTop: 30 }}
-                      source={{ uri: item.images[0].src }}
-                    />
-
-                    <Text
-                      style={{
-                        marginTop: 40,
-                        fontSize: 22,
-                        fontWeight: "bold",
-                        marginBottom: 20,
-                      }}
-                    >
-                      {item.name}
-                    </Text>
-
-                    <View style={{ flexDirection: "row" }}>
-                      <Text
-                        style={{
-                          marginTop: 10,
-                          fontSize: 20,
-                          fontWeight: "300",
-                          marginBottom: 20,
-                        }}
-                      >
-                        Buy this for :
-                      </Text>
-                      <Text
-                        style={{
-                          marginTop: 10,
-                          fontSize: 20,
-                          fontWeight: "bold",
-                          marginBottom: 20,
-                          color: "blue",
-                        }}
-                      >
-                        {" "}
-                        AED {parseInt(item.price).toFixed(2)}
-                      </Text>
-                    </View>
-
+          <View style={{ width: "100%", flex: 1 }}>
+            <ScrollView style={{ width: "100%", flex: 1 }}>
+              <View style={{ alignItems: "center", flex: 1, width: "100%" }}>
+                {this.Products.map((item) => {
+                  return (
                     <View
                       style={{
-                        width: "100%",
-                        flexDirection: "row",
-                        padding: 10,
-                        justifyContent: "space-between",
+                        width: "90%",
+                        backgroundColor: "white",
+                        marginTop: 20,
+                        borderRadius: 20,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        shadowColor: "#000",
+                        shadowOffset: {
+                          width: 0,
+                          height: 2,
+                        },
+                        shadowOpacity: 0.25,
+                        shadowRadius: 3.84,
+
+                        elevation: 5,
                       }}
                     >
-                      <TouchableOpacity
-                        // onPress={() =>
-                        //   this.props.navigation.navigate("Details", {
-                        //     product: item,
-                        //   })
-                        // }
-                        onPress={() => {
-                          this.Name("mookhtar")
-                            .then((res) => {
-                              alert(res);
-                            })
-                            .catch((error) => {
-                              alert(error);
-                            });
-                        }}
-                        style={{
-                          width: "40%",
-                          height: 50,
-                          backgroundColor: "blue",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          borderRadius: 20,
-                        }}
-                      >
-                        <Text style={{ color: "white" }}>Prize Details</Text>
-                      </TouchableOpacity>
+                      <Image
+                        style={{ width: "100%", height: 200, marginTop: 30 }}
+                        source={{ uri: item.images[0].src }}
+                      />
 
-                      <TouchableOpacity
+                      <Text
                         style={{
-                          width: "40%",
-                          height: 50,
-                          backgroundColor: "blue",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          borderRadius: 20,
+                          marginTop: 40,
+                          fontSize: 22,
+                          fontWeight: "bold",
+                          marginBottom: 20,
                         }}
                       >
-                        <Text style={{ color: "white" }}>Prize Details</Text>
-                      </TouchableOpacity>
+                        {item.name}
+                      </Text>
+
+                      <View style={{ flexDirection: "row" }}>
+                        <Text
+                          style={{
+                            marginTop: 10,
+                            fontSize: 20,
+                            fontWeight: "300",
+                            marginBottom: 20,
+                          }}
+                        >
+                          Buy this for :
+                        </Text>
+                        <Text
+                          style={{
+                            marginTop: 10,
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            marginBottom: 20,
+                            color: "blue",
+                          }}
+                        >
+                          {" "}
+                          AED {parseInt(item.price).toFixed(2)}
+                        </Text>
+                      </View>
+
+                      <View
+                        style={{
+                          width: "100%",
+                          flexDirection: "row",
+                          padding: 10,
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <TouchableOpacity
+                          // onPress={() =>
+                          //   this.props.navigation.navigate("Details", {
+                          //     product: item,
+                          //   })
+                          // }
+                          onPress={() => {
+                            this.Name("mookhtar")
+                              .then((res) => {
+                                alert(res);
+                              })
+                              .catch((error) => {
+                                alert(error);
+                              });
+                          }}
+                          style={{
+                            width: "40%",
+                            height: 50,
+                            backgroundColor: "blue",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: 20,
+                          }}
+                        >
+                          <Text style={{ color: "white" }}>Prize Details</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                          style={{
+                            width: "40%",
+                            height: 50,
+                            backgroundColor: "blue",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: 20,
+                          }}
+                        >
+                          <Text style={{ color: "white" }}>Prize Details</Text>
+                        </TouchableOpacity>
+                      </View>
                     </View>
-                  </View>
-                );
-              })}
-            </View>
-          </ScrollView>
+                  );
+                })}
+              </View>
+            </ScrollView>
+          </View>
         )}
+        <SafeAreaView>
+          <BottomTabBar wishlist navigation={this.props.navigation} />
+        </SafeAreaView>
       </SafeAreaView>
     );
   }

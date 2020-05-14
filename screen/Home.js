@@ -32,7 +32,7 @@ export default class Home extends Component {
         </SafeAreaView>
 
         <SafeAreaView style={{ backgroundColor: "white" }}>
-          <BottomTabBar />
+          <BottomTabBar home navigation={this.props.navigation} />
         </SafeAreaView>
       </View>
     );
