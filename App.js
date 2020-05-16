@@ -8,6 +8,7 @@ import Products from "./screen/Products";
 import Details from "./screen/Details";
 import Login from "./screen/Login";
 import splashscreen from "./screen/splashscreen";
+import "./config";
 
 const Stack = createStackNavigator();
 

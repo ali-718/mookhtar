@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { Text, View, SafeAreaView, Button, AsyncStorage } from "react-native";
 import BottomTabBar from "../components/BottomTabBar";
+import * as f from "firebase";
 
 export default class Home extends Component {
   componentDidMount() {
     console.log("I am Component did mount");
+
+    f.database().ref("users").child("002").set({
+      name: "mookhtar",
+      age: 21,
+    });
   }
 
   constructor() {
