@@ -14,6 +14,7 @@ export default class Home extends Component {
   state = {
     name: "",
     age: "",
+    data: [],
   };
 
   componentDidMount() {
@@ -37,10 +38,32 @@ export default class Home extends Component {
 
     // UPDATE DATA
 
-    f.database().ref("users").child("-M7ZPwHSIMu90WBuS58s").update({
-      age: 25,
-    });
+    // f.database().ref("users").child("-M7ZPwHSIMu90WBuS58s").update({
+    //   age: 25,
+    // });
+
+    f.database()
+      .ref("users")
+      .once("value")
+      .then((res) => {
+        // console.log(res.val());
+
+        res.forEach((item) => {
+          console.log(item.val());
+          console.log(item.key);
+
+          const user = { ...item.val(), id: item.key };
+
+          this.setState({
+            data: [...this.state.data, user],
+          });
+        });
+      });
   }
+
+  arr1 = [1, 2, 3];
+  arr2 = [4, 5, 6];
+  result = [...this.arr1, ...this.arr2];
 
   constructor() {
     super();
@@ -71,7 +94,7 @@ export default class Home extends Component {
               this.props.navigation.navigate("Login");
             }}
           />
-
+          {console.log(this.result)}
           <TextInput
             style={{
               width: "80%",
@@ -119,7 +142,17 @@ export default class Home extends Component {
             title="Add Data"
             onPress={() => this.AddData()}
           />
+          {this.state.data.map((item) => {
+            return (
+              <View style={{ marginTop: 40 }}>
+                <Text>Name: {item.name}</Text>
+                <Text>Age: {item.age}</Text>
+                <Text>ID: {item.id}</Text>
+              </View>
+            );
+          })}
         </SafeAreaView>
+
         <SafeAreaView style={{ backgroundColor: "white" }}>
           <BottomTabBar home navigation={this.props.navigation} />
         </SafeAreaView>
